@@ -4,8 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { backendUrl } from "./../App";
 import { toast } from "react-toastify";
-import { assets } from "../assets/assets";
-
+import { assets } from "../../assets/assets";
 const Orders = ({ token }) => {
   const [orders, setOrders] = useState([]);
 
@@ -14,11 +13,7 @@ const Orders = ({ token }) => {
       return null;
     }
     try {
-      const response = await axios.post(
-        backendUrl + "/api/order/list",
-        {},
-        { headers: { token } }
-      );
+      const response = await axios.post(backendUrl + "/api/order/list", {}, { headers: { token } });
       console.log(response.data);
 
       if (response.data.success) {
